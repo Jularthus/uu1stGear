@@ -9,7 +9,8 @@
     "manualTrans",
     "firstRegistration",
     "featurePack",
-    "price"
+    "price",
+    "contact"
   ],
   "data": [
     [
@@ -25,7 +26,8 @@
         "Navigation",
         "Harman Kardon"
       ],
-      32000
+      32000,
+      "placeholder@unicornuniversity.net"
     ],
     [
       1,
@@ -40,7 +42,8 @@
         "Heated seats",
         "Parking assist"
       ],
-      36000
+      36000,
+      "placeholder@unicornuniversity.net"
     ],
     [
       2,
@@ -55,7 +58,8 @@
         "Panoramic roof",
         "Wireless CarPlay"
       ],
-      34000
+      34000,
+      "placeholder@unicornuniversity.net"
     ],
     [
       3,
@@ -70,7 +74,8 @@
         "Bang & Olufsen",
         "Launch control"
       ],
-      134000
+      134000,
+      "placeholder@unicornuniversity.net"
     ],
     [
       4,
@@ -85,7 +90,8 @@
         "Heads-up display",
         "Adaptive suspension"
       ],
-      60000
+      60000,
+      "placeholder@unicornuniversity.net"
     ]
   ]
 }
