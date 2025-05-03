@@ -1,0 +1,91 @@
+{
+  "maxIndex": 4,
+  "keys": [
+    "index",
+    "model",
+    "mileage",
+    "hp",
+    "fuelType",
+    "manualTrans",
+    "firstRegistration",
+    "featurePack",
+    "price"
+  ],
+  "data": [
+    [
+      0,
+      "Mini JCW 2022",
+      18000,
+      231,
+      "Petrol",
+      true,
+      1640995200,
+      [
+        "Sport seats",
+        "Navigation",
+        "Harman Kardon"
+      ],
+      32000
+    ],
+    [
+      1,
+      "Mini Clubman Final Edition",
+      5000,
+      178,
+      "Petrol",
+      false,
+      1680307200,
+      [
+        "Exclusive trim",
+        "Heated seats",
+        "Parking assist"
+      ],
+      36000
+    ],
+    [
+      2,
+      "Mini Countryman Cooper SE",
+      30000,
+      220,
+      "Hybrid",
+      false,
+      1609459200,
+      [
+        "All4 AWD",
+        "Panoramic roof",
+        "Wireless CarPlay"
+      ],
+      34000
+    ],
+    [
+      3,
+      "Audi R8 V10",
+      25000,
+      620,
+      "Petrol",
+      true,
+      1580515200,
+      [
+        "Carbon fiber pack",
+        "Bang & Olufsen",
+        "Launch control"
+      ],
+      134000
+    ],
+    [
+      4,
+      "BMW Z4 M G29",
+      12000,
+      340,
+      "Petrol",
+      false,
+      1672531200,
+      [
+        "M Sport",
+        "Heads-up display",
+        "Adaptive suspension"
+      ],
+      60000
+    ]
+  ]
+}
