@@ -16,6 +16,7 @@ router.post("/create", async (req, res) => {
     manualTrans,
     firstRegistration,
     featurePack,
+    additionalInfo,
     price,
     contact,
   } = req.body;
@@ -36,12 +37,12 @@ router.post("/create", async (req, res) => {
     "boolean",
     "number",
     "object",
+    "string",
     "number",
     "string",
   ];
 
-  for (let i = 0; i < 9; i++) {
-    console.log(typeof (newEntry[i]));
+  for (let i = 0; i < 10; i++) {
     if (typeof newEntry[i] != types[i]) {
       res.status(400).json("A type error happened");
       console.log("[ERROR] A type error happened");
@@ -51,11 +52,14 @@ router.post("/create", async (req, res) => {
 
   // CHECK VALUES
   if (
-    // mileage or power negatives
+    // mileage or power or price negatives
     newEntry[1] < 0 ||
     newEntry[2] < 0 ||
+    newEntry[8] < 0 ||
     // unallowed fuel type
-    !(["Petrol", "Diesel", "Electric", "Hybrid"].includes(newEntry[3])) ||
+    !(["petrol", "diesel", "electric", "hybrid"].includes(
+      newEntry[3].toLowerCase(),
+    )) ||
     // feature list contains anything that isnt a string
     !(
       Array.isArray(newEntry[6]) &&
