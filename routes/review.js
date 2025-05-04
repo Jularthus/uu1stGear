@@ -46,10 +46,14 @@ router.post("/reviewCar", async (req, res) => {
 
   const status = parseInt(req.query.status);
   cookieName = status == 1 ? "acceptedOffers" : "refusedOffers";
+  otherCookie = status == 0 ? "acceptedOffers" : "refusedOffers";
 
   let reviewed = cookie.getCookie(req, cookieName) || [];
+  let otherList = cookie.getCookie(req, otherCookie) || [];
 
-  if (!reviewed.includes(offer[0])) {
+  console.log(otherList);
+
+  if (!(reviewed.includes(offer[0]) || otherList.includes(offer[0]))) {
     reviewed.push(offer[0]);
   }
 
