@@ -19,6 +19,7 @@ router.post("/create", async (req, res) => {
     additionalInfo,
     price,
     contact,
+    picture,
   } = req.body;
 
   // CREATE OFFER
@@ -40,9 +41,10 @@ router.post("/create", async (req, res) => {
     "string",
     "number",
     "string",
+    "string",
   ];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 11; i++) {
     if (typeof newEntry[i] != types[i]) {
       res.status(400).json("A type error happened");
       console.log("[ERROR] A type error happened");
@@ -52,22 +54,23 @@ router.post("/create", async (req, res) => {
 
   // CHECK VALUES
   if (
-    // mileage or power or price negatives
-    newEntry[1] < 0 ||
-    newEntry[2] < 0 ||
-    newEntry[8] < 0 ||
-    // unallowed fuel type
-    !(["petrol", "diesel", "electric", "hybrid"].includes(
+    newEntry[1] < 0 || newEntry[2] < 0 || newEntry[8] < 0 ||
+    !["petrol", "diesel", "electric", "hybrid"].includes(
       newEntry[3].toLowerCase(),
-    )) ||
-    // feature list contains anything that isnt a string
-    !(
-      Array.isArray(newEntry[6]) &&
-      newEntry[6].every((item) => typeof item === "string")
-    )
+    ) ||
+    !(Array.isArray(newEntry[6]) &&
+      newEntry[6].every((item) => typeof item === "string")) ||
+    (() => {
+      try {
+        const url = new URL(newEntry[10]);
+        return !/\.(jpg|jpeg|png|webp|gif|bmp|svg)$/i.test(url.pathname);
+      } catch {
+        return true;
+      }
+    })()
   ) {
-    res.status(400).json("Values error (eg. mileage < 0)");
-    console.log("[ERROR] Values error (eg. mileage < 0)");
+    res.status(400).json("Values error (eg. mileage < 0 or invalid image URL)");
+    console.log("[ERROR] Values error (eg. mileage < 0 or invalid image URL)");
     return;
   }
 
@@ -81,6 +84,16 @@ router.post("/create", async (req, res) => {
   // allow easier testing as no car is named test
   if (!(newEntry[1] === "test")) {
     db.maxIndex += 1;
+
+    // cookie handling
+    let cookiePosted = cookie.getCookie(req, "postedOffers") || [];
+    if (!cookiePosted.includes(db.maxIndex)) cookiePosted.push(db.maxIndex);
+    cookie.setCookie(res, "postedOffers", cookiePosted, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false,
+    });
+
     fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), "utf-8");
   }
 

@@ -11,7 +11,8 @@
     "featurePack",
     "additionalInfo",
     "price",
-    "contact"
+    "contact",
+    "picture"
   ],
   "data": [
     [
@@ -29,7 +30,8 @@
       ],
       "additional and useful info!",
       32000,
-      "placeholder@unicornuniversity.net"
+      "placeholder@unicornuniversity.net",
+      "https://images.carexpert.com.au/resize/3000/-/app/uploads/2021/12/2022-mini-jcw-essential-17.jpg"
     ],
     [
       1,
@@ -46,7 +48,8 @@
       ],
       "additional and useful info!",
       36000,
-      "placeholder@unicornuniversity.net"
+      "placeholder@unicornuniversity.net",
+      "https://www.mini-me.com/en_ME/home/mini-editions/clubman-final-edition/_jcr_content/main/par/mosaic_gallery_copy/mosaicGalleryItemsPar/mosaic_gallery_item/imageItem/damImage.narrow.768w.j_1680092288022.jpg"
     ],
     [
       2,
@@ -63,7 +66,8 @@
       ],
       "additional and useful info!",
       34000,
-      "placeholder@unicornuniversity.net"
+      "placeholder@unicornuniversity.net",
+      "https://vehicle-images.dealerinspire.com/e95f-110008240/thumbnails/large/WMZ53GA06S7R59224/3ccd16bb736600667efa75d0f1acec46.jpg"
     ],
     [
       3,
@@ -80,7 +84,8 @@
       ],
       "additional and useful info!",
       134000,
-      "placeholder@unicornuniversity.net"
+      "placeholder@unicornuniversity.net",
+      "https://images.pistonheads.com/nimg/46501/mceu_6169168411669210667502.jpg"
     ],
     [
       4,
@@ -97,7 +102,8 @@
       ],
       "additional and useful info!",
       60000,
-      "placeholder@unicornuniversity.net"
+      "placeholder@unicornuniversity.net",
+      "https://hamann-motorsport.com/wp-content/uploads/2022/05/hamann-bmw-z4-g29-01.jpg"
     ]
   ]
 }

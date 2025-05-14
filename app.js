@@ -1,8 +1,17 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      callback(null, origin);
+    },
+    credentials: true,
+  }),
+);
 
 app.get("/health", (req, res) => {
   res.send("<h1>I am OK!</h1>");

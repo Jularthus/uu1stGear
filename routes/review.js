@@ -8,6 +8,8 @@ const router = express.Router();
 router.get("/getRandomCar", async (req, res) => {
   console.log(req.originalUrl);
 
+  console.log(`COOKIES: ${req.cookies}`);
+
   const db = JSON.parse(
     fs.readFileSync(path.join(__dirname, "..", "db", "offers.json"), "utf-8"),
   );
@@ -22,7 +24,9 @@ router.get("/getRandomCar", async (req, res) => {
     randomIndex = Math.floor(Math.random() * (maxIndex + 1));
     tries++;
     if (tries > maxIndex * maxIndex) {
-      res.json({ error: "Error, all cars have been reviewed" });
+      return res.status(400).json({
+        error: "Error, all cars have been reviewed",
+      });
     }
   } while (reviewed.includes(randomIndex));
 
@@ -45,8 +49,8 @@ router.post("/reviewCar", async (req, res) => {
   if (!offer) return res.status(404).json({ error: "Offer not found" });
 
   const status = parseInt(req.query.status);
-  cookieName = status == 1 ? "acceptedOffers" : "refusedOffers";
-  otherCookie = status == 0 ? "acceptedOffers" : "refusedOffers";
+  const cookieName = status == 1 ? "acceptedOffers" : "refusedOffers";
+  const otherCookie = status == 0 ? "acceptedOffers" : "refusedOffers";
 
   let reviewed = cookie.getCookie(req, cookieName) || [];
   let otherList = cookie.getCookie(req, otherCookie) || [];
@@ -57,7 +61,11 @@ router.post("/reviewCar", async (req, res) => {
     reviewed.push(offer[0]);
   }
 
-  cookie.setCookie(res, cookieName, reviewed);
+  cookie.setCookie(res, cookieName, reviewed, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: false,
+  });
 
   console.log(offer);
 
